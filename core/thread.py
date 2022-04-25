@@ -337,7 +337,7 @@ class Thread:
             embed.set_footer(text=footer)
         else:
             embed.set_footer(text=f"{footer} • (not in main server)")
-        embed.add_field(name="Time elapsed", value=f'<t:{int(time.time())}:R>', inline=True)
+        embed.add_field(name="Time elapsed", value=f'<t:{int(datetime.now().timestamp())}:R>', inline=True)
         embed.description += ", ".join(user_info)
 
         if log_count is not None:
