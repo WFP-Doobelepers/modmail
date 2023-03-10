@@ -1350,7 +1350,12 @@ class ModmailBot(commands.Bot):
         r_channel = (self.get_channel(payload.channel_id))
         modmail_category = self.config["main_category_id"]
 
-        if r_channel.category_id == modmail_category or r_channel.type is discord.ChannelType.private:
+        if r_channel.type is discord.ChannelType.private:
+            await asyncio.gather(
+                self.handle_reaction_events(payload),
+                self.handle_react_to_contact(payload),
+            )
+        elif r_channel.category_id == modmail_category :
             await asyncio.gather(
                 self.handle_reaction_events(payload),
                 self.handle_react_to_contact(payload),
