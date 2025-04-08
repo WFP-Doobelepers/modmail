@@ -354,7 +354,7 @@ class Thread:
         else:
             embed.set_author(name=str(user), icon_url=user.display_avatar.url, url=log_url)
             embed.set_footer(text=f"{footer} • (not in main server)")
-
+        embed.add_field(name="Time elapsed", value=f'<t:{int(datetime.now().timestamp())}:R>', inline=True)
         embed.description += ", ".join(user_info)
 
         if log_count is not None:
